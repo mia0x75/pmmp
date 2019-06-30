@@ -12,7 +12,7 @@ return new \Phalcon\Config([
 		'password'   => '1DggfVtmx3keljqR',
 		'dbname'     => 'carts',
 		'persistent' => true,
-		'charset'    => 'utf8'
+		'charset'    => 'utf8mb4'
 	],
 
 	'application' => [

@@ -103,7 +103,7 @@ class Application extends \Phalcon\Mvc\Application
 	 * Register the given modules in the parent and prepare to load
 	 * the module routes by triggering the init routes method
 	 */
-	public function registerModules(array $modules, $merge = null)
+	public function registerModules(array $modules, bool $merge = false): \Phalcon\Application
 	{
 		parent::registerModules($modules, $merge);
 
@@ -125,6 +125,8 @@ class Application extends \Phalcon\Mvc\Application
 			/** @var \Karts\Application\ApplicationModule $className */
 			$className::initRoutes($this->di);
 		}
+
+		return $this;
 	}
 
 	/**
@@ -132,7 +134,7 @@ class Application extends \Phalcon\Mvc\Application
 	 */
 	public function main()
 	{
-		echo $this->handle()->getContent();
+		echo $this->handle($_SERVER["REQUEST_URI"])->getContent();
 	}
 
 	 /**
